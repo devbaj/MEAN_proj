@@ -5,18 +5,30 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './http.service';
+import { D3Service } from './d3.service';
+import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './header/header.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent,
+    HeaderComponent,
+    SidebarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpService, D3Service],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
