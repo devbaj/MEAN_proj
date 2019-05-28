@@ -3,5 +3,4 @@
   grid-template-areas: "head head" "side main" "foot foot";
   grid-template-columns: 20rem 4fr;
   grid-template-rows: 6rem auto 6rem;
-  grid-gap: .5rem;
 }

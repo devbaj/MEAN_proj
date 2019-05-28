@@ -1,3 +1,84 @@
-<p>
-  register works!
-</p>
+<div class="register" fxLayout="column nowrap" fxLayoutAlign="center center">
+
+  <h2 class="register__title">Sign Up</h2>
+
+  <form #regForm="ngForm" class="register__form">
+
+    <div class="register__group">
+      <label for="fname" class="register__label">First Name</label>
+      <input
+        class="form-control register__input"
+        type="text"
+        name="fname"
+        id="fname"
+        [(ngModel)]="fname"
+        minlength="2"
+        required
+        #fnameInput="ngModel"
+      >
+    </div>
+
+    <div class="register__group">
+      <label for="lname" class="register__label">Last Name</label>
+      <input
+        class="form-control register__input"
+        type="text"
+        name="lname"
+        id="lname"
+        [(ngModel)]="lname"
+        minlength="2"
+        required
+        #lnameInput="ngModel"
+      >
+    </div>
+
+    <div class="register__group">
+      <label for="email" class="register__label">Email</label>
+      <input
+        class="form-control register__input"
+        id="email"
+        type="text"
+        name="email"
+        [(ngModel)]="email"
+        minlength="5"
+        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+        required
+        #emailInput="ngModel"
+        (keydown)="checkDupes(email)"
+      >
+    </div>
+
+    <div class="register__group">
+      <label for="pw" class="register__label">Password</label>
+      <input
+        class="form-control register__input"
+        type="password"
+        name="pw"
+        id="pw"
+        [(ngModel)]="pw"
+        minlength="7"
+        required
+        #pwInput="ngModel"
+      >
+    </div>
+
+    <div class="register__group">
+      <label for="pwConf" class="register__label">Re-type Password</label>
+      <input
+        class="form-control regfister__input"
+        type="password"
+        name="pwConf"
+        id="pwConf"
+        [(ngModel)]="pwConf"
+        minlength="7"
+        required
+        #pwConfInput="ngModel"
+        (keydown)="checkPwMatch()"
+      >
+    </div>
+
+    <button (click)="submit()">Register</button>
+
+  </form>
+
+</div>

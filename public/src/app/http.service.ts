@@ -10,5 +10,16 @@ export class HttpService {
     private _http: HttpClient
   ) { }
 
+  createUser(newUser: any): any {
+    return this._http.post('', {newUser});
+  }
+
+  checkDupes(field: string, input: string): any {
+    return this._http.post('', {field, input});
+  }
+
+  attemptLogin(email: string, pw: string): any {
+    return this._http.post('', {email, password: pw});
+  }
 
 }
