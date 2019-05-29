@@ -12,4 +12,6 @@ export class DataEntryComponent implements OnInit {
   ngOnInit() {
   }
 
+  // will need method here to pull all financial data associated with this user's company
+
 }
