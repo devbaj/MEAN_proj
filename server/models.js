@@ -18,6 +18,11 @@ sequelize
 
 const User = sequelize.define('user', {
     // attributes
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+    },
     firstName: {
         type: Sequelize.STRING,
         allowNull: false
@@ -32,7 +37,7 @@ const User = sequelize.define('user', {
         allowNull: false
     },
     email: {
-        type: Sequelize.dec,
+        type: Sequelize.STRING,
         allowNull: false,
         unique: true,
         validate: {
@@ -50,75 +55,75 @@ const User = sequelize.define('user', {
     sequelize, timestamps: true
 });
 
-const Customer = sequilize.define('customer', {
-    customerName: {
-        type: sequelize.STRING,
-        allowNull: false
-    },
-    customerAddress: {
-        type: sequilize.STRING
-    },
-    customerCity: {
-        type: sequilize.STRING
-    },
-    customerState: {
-        type: sequilize.STRING
-    },
-    customerZip: {
-        type: sequilize.INT
-    }
-    //ADD JOBS
-    }, {
-        // options
-        sequelize, timestamps: true
-});
+// const Customer = sequelize.define('customer', {
+//     customerName: {
+//         type: Sequelize.STRING,
+//         allowNull: false
+//     },
+//     customerAddress: {
+//         type: Sequelize.STRING
+//     },
+//     customerCity: {
+//         type: Sequelize.STRING
+//     },
+//     customerState: {
+//         type: Sequelize.STRING
+//     },
+//     customerZip: {
+//         type: Sequelize.INTEGER
+//     }
+//     //ADD JOBS
+//     }, {
+//         // options
+//         sequelize, timestamps: true
+// });
     
-const Job = sequilize.define('job', {
-    jobDate: {
-        type: Sequelize.DATEONLY,
-        allowNull: false
-    },
-    jobRevenue: {
-        type: Sequelize.DECIMAL,
-        allowNull: false
-    },
-    jobStartTime: {
-        type: Sequelize.TIME
-    },
-    jobEndTime: {
-        type: Sequelize.TIME
-    },
-    jobBudgetedHours: {
-        type: Sequelize.DOUBLE
-    },
-    jobType: {
-        type: sequelize.STRING
-    },
+// const Job = sequelize.define('job', {
+//     jobDate: {
+//         type: Sequelize.DATEONLY,
+//         allowNull: false
+//     },
+//     jobRevenue: {
+//         type: Sequelize.DECIMAL,
+//         allowNull: false
+//     },
+//     jobStartTime: {
+//         type: Sequelize.TIME
+//     },
+//     jobEndTime: {
+//         type: Sequelize.TIME
+//     },
+//     jobBudgetedHours: {
+//         type: Sequelize.DOUBLE
+//     },
+//     jobType: {
+//         type: Sequelize.STRING
+//     },
 
-    //still need Customer, User, crew
-}, {
-    // options
-    sequelize, timestamps: true
-});
+//     //still need Customer, User, crew
+// }, {
+//     // options
+//     sequelize, timestamps: true
+// });
 
 
-const Company = sequilize.define('company', {
-    companyName: {
-        type: sequilize.STRING
-    }
-});
+// const Company = sequelize.define('company', {
+//     companyName: {
+//         type: Sequelize.STRING
+//     }
+// });
 
-const Employee = sequilize.define('employee', {
-    employeeName: {
-        type: sequilize.STRING,
-        allowNull: false
-    }
-})
-User.hasMany(Customer);
-User.hasMany(Employee);
-Customer.hasMany(Job);
-Job.belongsToMany(Employee, {through: 'JobEmployee'})
-Employee.belongsToMany(Job, {through: 'JobEmployee'})
+// const Employee = sequelize.define('employee', {
+//     employeeName: {
+//         type: Sequelize.STRING,
+//         allowNull: false
+//     }
+// })
+// User.hasMany(Customer);
+// User.hasMany(Employee);
+// Customer.hasMany(Job);
+// Job.belongsToMany(Employee, {through: 'JobEmployee'})
+// Employee.belongsToMany(Job, {through: 'JobEmployee'})
 
 sequelize.sync({ force: true })
     .then(() => {
@@ -126,10 +131,10 @@ sequelize.sync({ force: true })
 })
 
 
-module.exports = {
-    User,
-    Customer,
-    Job,
-    Company,
-    Employee
-}
+// module.exports = {
+//     User,
+//     Customer,
+//     Job,
+//     Company,
+//     Employee
+// }
