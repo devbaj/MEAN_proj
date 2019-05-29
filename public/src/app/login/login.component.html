@@ -1,5 +1,7 @@
 <div class="login">
 
+  <p class="login__Warning" [hidden]="!warn">You must be logged in to do that!</p>
+
   <h2 class="login__title">Log In</h2>
 
   <form #loginForm="ngForm" class="login__form">

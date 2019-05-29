@@ -22,4 +22,8 @@ export class HttpService {
     return this._http.post('', {email, password: pw});
   }
 
+  setUser(userid: string): any {
+    return this._http.post('', userid);
+  }
+
 }

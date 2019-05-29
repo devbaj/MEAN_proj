@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
+import { UserMgmtService } from '../user-mgmt.service';
 
 @Component({
   selector: 'app-login',
@@ -9,12 +10,19 @@ import { HttpService } from '../http.service';
 export class LoginComponent implements OnInit {
   email: string;
   pw: string;
+  warn: boolean;
 
   constructor(
-    private _httpService: HttpService
-  ) { }
+    private _httpService: HttpService,
+    private _userMgmtService: UserMgmtService
+  ) {
+    this.warn = false;
+  }
 
   ngOnInit() {
+    if (this._userMgmtService.illegalAction) {
+      this.warn = true;
+    }
   }
 
   attemptLogin() {

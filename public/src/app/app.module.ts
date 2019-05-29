@@ -14,6 +14,10 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
+import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserMgmtService } from './user-mgmt.service';
+import { DataEntryComponent } from './data-entry/data-entry.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,9 @@ import { FooterComponent } from './footer/footer.component';
     HomeComponent,
     HeaderComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    UserSettingsComponent,
+    DataEntryComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +38,7 @@ import { FooterComponent } from './footer/footer.component';
     FlexLayoutModule,
     FormsModule
   ],
-  providers: [HttpService, D3Service],
+  providers: [HttpService, D3Service, UserMgmtService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

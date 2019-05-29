@@ -1,9 +1,13 @@
 <div class="wrapper" fxLayout="row nowrap" fxLayoutAlign="center center">
 
+  <p [routerLink]="['/home']">LOGO HERE</p>
+
   <h1>
     NAME PENDING
   </h1>
 
   <button [routerLink]="['/login']">Log In</button>
+  <button [routerLink]="['/reg']">Sign Up</button>
+  <button (click)="logout()">Log Out</button>
 
 </div>
