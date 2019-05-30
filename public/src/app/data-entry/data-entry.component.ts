@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserMgmtService } from '../user-mgmt.service';
 import { HttpService } from '../http.service';
+import { Time } from '@angular/common';
 
 @Component({
   selector: 'app-data-entry',
@@ -9,9 +10,17 @@ import { HttpService } from '../http.service';
 })
 export class DataEntryComponent implements OnInit {
   userid: string;
+  customer: string;
+  qty: number;
+  rate: number;
+  discounts: [number];
   date: Date;
   expenses: number;
   revenue: number;
+  crewName: string;
+  crewMember: string;
+  start: Time;
+  end: Time;
   isValid: boolean;
 
   constructor(
@@ -20,6 +29,7 @@ export class DataEntryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this._userMgmtService.checkUser();
     this.userid = this._userMgmtService.userid;
     this.isValid = true;
   }

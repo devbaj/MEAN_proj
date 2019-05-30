@@ -28,7 +28,9 @@ export class LoginComponent implements OnInit {
   attemptLogin() {
     let observable = this._httpService.attemptLogin(this.email, this.pw)
     observable.subscribe( (res: any) => {
-      if (res[`success`]) { localStorage.setItem('userid', res[`payload`][`id`]); } else { console.log('error', res[`error`]); }
+      if (res[`success`]) {
+        this._userMgmtService.logInUser(res[`payload`][`id`]);
+      } else { console.log('error', res[`error`]); }
     });
   }
 

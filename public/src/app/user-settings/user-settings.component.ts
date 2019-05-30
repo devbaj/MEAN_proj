@@ -18,13 +18,8 @@ export class UserSettingsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (this._userMgmtService.checkUser()) {
-      this.userid = this._userMgmtService.userid;
-      let observable = this._httpService.setUser(this.userid);
-    } else {
-      this._userMgmtService.illegalAction = true;
-      this._router.navigate(['login']);
-    }
+    this._userMgmtService.checkUser();
+    this.userid = this._userMgmtService.getId();
   }
 
 }

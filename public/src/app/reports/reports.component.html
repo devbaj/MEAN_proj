@@ -1,0 +1,37 @@
+<div class="reports">
+
+  <h2 class="reports__title">Daily Summary</h2>
+
+  <select
+    name="range"
+    id="range"
+    [(ngModel)]="rangeString"
+  >
+    <option value="7">Last 7 days</option>
+    <option value="14">Last 14 days</option>
+    <option value="30">Last 30 days</option>
+  </select>
+  <button (click)="adjustRange()">Update</button>
+
+  <table class="reports__table">
+    <thead class="reports__headrow">
+      <th class="reports__th">Date</th>
+      <th class="reports__th">Expenses</th>
+      <th class="reports__th">Revenue</th>
+      <th class="reports__th">Gross Profit</th>
+      <th class="reports__th">Actions</th>
+    </thead>
+    <tr class="reports__row">
+      <td class="reports__entry"></td>
+      <td class="reports__entry"></td>
+      <td class="reports__entry"></td>
+      <td class="reports__entry"></td>
+      <td class="reports__entry">
+        <button [routerLink]="['/reports/day', ____]">View Details</button>
+        <button (click)="writeDayReport()">Generate PDF</button>
+      </td>
+    </tr>
+  </table>
+
+<button (click)="report()" id="customReportBtn">Generate Custom Report</button>
+</div>

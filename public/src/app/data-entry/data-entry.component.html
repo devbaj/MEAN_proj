@@ -1,28 +1,22 @@
 <div class="data">
 
-  <h2 class="data__title">History</h2>
-  <table class="data__history">
-    <thead class="data__headrow">
-      <th class="data__header">For Date</th>
-      <th class="data__header">Expenses</th>
-      <th class="data__header">Revenue</th>
-      <th class="data__header">Actions</th>
-      <th class="data__header">Date Entered</th>
-      <th class="data__header">Actions</th>
-    </thead>
-    <tr class="data__entry">
-      <!-- What goes here will depend on DB info and how we pull it in -->
-      <td class="data__item"></td>
-      <td class="data__item"></td>
-      <td class="data__item"></td>
-      <td class="data__item"></td>
-      <td class="data__item"></td>
-      <td class="data__item"></td>
-    </tr>
-  </table>
 
-  <h2 class="data__title">Add New Entry</h2>
+  <h2 class="data__title">Add New Job</h2>
   <form #dataForm="ngForm" class="data__form">
+
+    <div class="data__group">
+      <label for="customer" class="data__label">Customer</label>
+      <!-- Needs add new customer option -->
+      <input
+        class="form-control data__input"
+        type="text"
+        minlength="3"
+        required
+        [(ngModel)]="customer"
+        name="customer"
+        #customerInput="ngModel"
+      >
+    </div>
 
     <div class="data__group">
       <label class="data__label" for="date">Date</label>
@@ -37,16 +31,32 @@
     </div>
 
     <div class="data__group">
-      <label class="data__label" for="Expenses">Expenses:</label>
+      <label for="qty" class="data__label">Quantity</label>
       <input
         class="form-control data__input"
         type="number"
-        step="any"
-        name="expenses"
-        [(ngModel)]="expenses"
-        #expenseInput="ngModel"
+        [(ngModel)]="qty"
+        name="qty"
+        #qtyInput="ngModel"
+        min="1"
+        step="1"
         required
-        min="0"
+        inputmode="numeric"
+      >
+    </div>
+
+    <div class="data__group">
+      <label for="rate" class="data__label">Rate</label>
+      <input
+        type="number"
+        class="form-control data__input"
+        [(ngModel)]="rate"
+        name="rate"
+        inputmode="numeric"
+        #rateInput="ngModel"
+        min="1"
+        step="0.01"
+        required
       >
     </div>
 
@@ -61,6 +71,75 @@
         #revenueInput="ngModel"
         required
         min="0"
+      >
+    </div>
+
+    <div class="data__group">
+      <label for="discounts" class="data__label">Discounts</label>
+      <input
+        class="form-control data__input"
+        type="number"
+        inputmode="numeric"
+        name="discounts"
+        [(ngModel)]="discounts"
+        #discountInput="ngModel"
+      >
+    </div>
+
+    <div class="data__label">
+      <label for=""></label>
+    </div>
+
+    <h3 class="data__subtitle">Crew</h3>
+
+    <div class="data__group">
+      <label for="crewName">Crew Name</label>
+      <!-- Add option to create new crew/employee -->
+      <input
+        class="form-control data__input"
+        name="crewName"
+        type="text"
+        [(ngModel)]="crewName"
+        #crewNameInput="ngModel"
+      >
+    </div>
+
+    <div class="data__subgroup">
+
+      <div class="data__group">
+        <label for="crewMember" class="data__label">Crew Member</label>
+        <input
+          type="text"
+          name="crewMember"
+          [(ngModel)]="crewMember"
+          #crewMemberInput="ngModel"
+        >
+        <button>+</button>
+      </div>
+
+      <!-- TODO: option for adding more members to team -->
+
+    </div>
+
+    <div class="data__group">
+      <label for="start" class="data__label">Start Time</label>
+      <input
+        type="time"
+        name="start"
+        [(ngModel)]="start"
+        #startInput="ngModel"
+        required
+      >
+    </div>
+
+    <div class="data__group">
+      <label for="end" class="data__label">End Time</label>
+      <input
+        type="time"
+        name="end"
+        [(ngModel)]="end"
+        #endInput="ngModel"
+        required
       >
     </div>
 

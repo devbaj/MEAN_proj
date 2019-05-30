@@ -15,17 +15,31 @@ export class UserMgmtService {
     private _router: Router
   ) {
     this.illegalAction = false;
-    this.loggedIn = false;
+    this.loggedIn = true;
   }
 
-  checkUser(): boolean {
-    if (localStorage.length > 0) {
+  logInUser(userid: string) {
+    localStorage.setItem('userid', userid);
+    this.loggedIn = true;
+  }
+
+  getId() {
+    if (this.loggedIn) {
+      this.userid = localStorage.getItem('userid');
+      return this.userid;
+    } else {
+      this.checkUser();
+    }
+  }
+
+  checkUser() {
+    if (this.loggedIn) {
       console.log('passed userid check');
       this.userid = localStorage.getItem('userid');
-      this.loggedIn = true;
-      return true;
+      this.illegalAction = false;
     } else {
-      return false;
+      this.illegalAction = true;
+      this._router.navigate(['login']);
     }
   }
 

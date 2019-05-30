@@ -19,6 +19,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserMgmtService } from './user-mgmt.service';
 import { DataEntryComponent } from './data-entry/data-entry.component';
 import { VisualizeComponent } from './visualize/visualize.component';
+import { HistoryComponent } from './history/history.component';
+import { ReportsComponent } from './reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { VisualizeComponent } from './visualize/visualize.component';
     FooterComponent,
     UserSettingsComponent,
     DataEntryComponent,
-    VisualizeComponent
+    VisualizeComponent,
+    HistoryComponent,
+    ReportsComponent
   ],
   imports: [
     BrowserModule,

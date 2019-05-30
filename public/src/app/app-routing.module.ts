@@ -6,6 +6,8 @@ import { RegisterComponent } from './register/register.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { DataEntryComponent } from './data-entry/data-entry.component';
 import { VisualizeComponent } from './visualize/visualize.component';
+import { HistoryComponent } from './history/history.component';
+import { ReportsComponent } from './reports/reports.component';
 
 const routes: Routes = [
   {
@@ -31,6 +33,14 @@ const routes: Routes = [
   {
     path: 'visualize',
     component: VisualizeComponent
+  },
+  {
+    path: 'history',
+    component: HistoryComponent
+  },
+  {
+    path: 'reports',
+    component: ReportsComponent
   },
   {
     path: '',
