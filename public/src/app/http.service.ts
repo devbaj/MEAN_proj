@@ -30,4 +30,9 @@ export class HttpService {
     return this._http.post('', {userid, entry});
   }
 
+  getAllJobsData() {
+    return this._http.get('/api/jobs/all/withassociations')
+  }
+
+
 }

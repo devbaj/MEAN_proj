@@ -32,6 +32,8 @@ module.exports = function(app){
     app.get('/api/employees_jobs/all', controller.employees_jobs_all);
     app.get('/api/employees_jobs/:id', controller.employees_jobs_getOne);
     app.post('/api/employees_jobs/new', controller.employees_jobs_new);
+    app.get('/api/employees_jobs/all/withassociations', controller.employees_jobs_with_associations);
+
     // app.patch('/api/employees_jobs/edit/:id', controller.employees_jobs_edit);
     app.delete('/api/employees_jobs/:id', controller.employees_jobs_deleteOne);
     
@@ -39,6 +41,7 @@ module.exports = function(app){
     app.get('/api/jobs/all', controller.jobs_all);
     app.get('/api/jobs/:id', controller.jobs_getOne);
     app.post('/api/jobs/new', controller.jobs_new);
+    app.get('/api/jobs/all/withassociations', controller.jobs_with_associations);
     // app.patch('/api/jobs/edit/:id', controller.jobs_edit);
     app.delete('/api/jobs/:id', controller.jobs_deleteOne);
     

@@ -1,6 +1,15 @@
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
+const db = {};
+
+
 ////MODULARIZATION WITH MODELS:
 const User = require("../models").User;
-
+const Company = require("../models").Company;
+const Job = require("../models").Job;
+const Employee = require("../models").Employee;
+const Customer = require("../models").Customer;
+const employees_jobs = require("../models").employees_jobs;
 //==================   This could get messy, we should modularize it.  I spent time trying to do it but couldn't get it working
 //EXPORT OUR CONTROLLERS SO OUR ROUTES CAN ACCESS IT
 module.exports = {
@@ -10,7 +19,8 @@ module.exports = {
     company_all: (req, res) => {
         Company.findAll({})
         .then( data => res.json({'success': true, 'payload': data}))
-        .catch( err => res.json({'success': false, 'error': err}))
+        .catch( err => res.json({'success': false, 'error': err}
+        ))
         },
     company_getOne: (req, res) => {
         Company.findOne({ where: { id: req.params.id } })
@@ -110,6 +120,15 @@ module.exports = {
         .then( data => res.json({'success': true, 'payload': data}))
         .catch( err => res.json({'success': false, 'error': err}))
         },
+
+    employees_jobs_with_associations: (req, res) => {
+        employees_jobs.findAll({
+            include: [{ model: Employee }]
+        })
+        .then( data => res.json({'success': true, 'payload': data}))
+        .catch( err => res.json({'success': false, 'error': err}))
+        }, 
+    
         //edit needs to be passed in from a form
     // employees_jobs_edit: (req, res) => {
     //     employees_jobs.update({ where: { id: req.params.id } })
@@ -134,6 +153,16 @@ module.exports = {
         .then( data => res.json({'success': true, 'payload': data}))
         .catch( err => res.json({'success': false, 'error': err}))
         },
+
+    //get jobs plus employees plus customer name
+    jobs_with_associations: (req, res) => {
+        Job.findAll({
+            include: [{ model: Customer }]
+        })
+        .then( data => res.json({'success': true, 'payload': data}))
+        .catch( err => res.json({'success': false, 'error': err}))
+        }, 
+
     jobs_new: (req, res) => {
         Job.create( req.body )
         .then( data => res.json({'success': true, 'payload': data}))
