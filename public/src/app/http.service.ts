@@ -26,4 +26,8 @@ export class HttpService {
     return this._http.post('', userid);
   }
 
+  addData(userid: string, entry: any): any {
+    return this._http.post('', {userid, entry});
+  }
+
 }

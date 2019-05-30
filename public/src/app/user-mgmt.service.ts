@@ -22,6 +22,7 @@ export class UserMgmtService {
     if (localStorage.length > 0) {
       console.log('passed userid check');
       this.userid = localStorage.getItem('userid');
+      this.loggedIn = true;
       return true;
     } else {
       return false;

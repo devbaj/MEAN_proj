@@ -1,6 +1,6 @@
 <div class="data">
 
-  <h2 class="data__title"></h2>
+  <h2 class="data__title">History</h2>
   <table class="data__history">
     <thead class="data__headrow">
       <th class="data__header">For Date</th>
@@ -20,5 +20,52 @@
       <td class="data__item"></td>
     </tr>
   </table>
+
+  <h2 class="data__title">Add New Entry</h2>
+  <form #dataForm="ngForm" class="data__form">
+
+    <div class="data__group">
+      <label class="data__label" for="date">Date</label>
+      <input
+        class="form-control data__input"
+        type="date"
+        [(ngModel)]="date"
+        name="date"
+        #dateInput="ngModel"
+        required
+      >
+    </div>
+
+    <div class="data__group">
+      <label class="data__label" for="Expenses">Expenses:</label>
+      <input
+        class="form-control data__input"
+        type="number"
+        step="any"
+        name="expenses"
+        [(ngModel)]="expenses"
+        #expenseInput="ngModel"
+        required
+        min="0"
+      >
+    </div>
+
+    <div class="data__group">
+      <label class="data__label" for="revenue">Revenue</label>
+      <input
+        class="form-control data__input"
+        type="number"
+        step="any"
+        name="revenue"
+        [(ngModel)]="revenue"
+        #revenueInput="ngModel"
+        required
+        min="0"
+      >
+    </div>
+
+    <button [disabled]="dataForm.form.invalid" (click)="submit()">Submit</button>
+
+  </form>
 
 </div>
