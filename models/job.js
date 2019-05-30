@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Job.belongsToMany(models.Employee, {
       through: 'employees_jobs',
-      as: 'employee'
+      foreignKey: 'jobId'
     });
     Job.belongsTo(models.Customer);
   };

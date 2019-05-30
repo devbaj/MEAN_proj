@@ -80,6 +80,20 @@ module.exports = {
         .then( data => res.json({'success': true, 'payload': data}))
         .catch( err => res.json({'success': false, 'error': err}))
         },
+    employee_all_with_jobs: (req, res) => {
+        Employee.findAll({
+            include: [
+                { 
+                    model: Job,
+                    include: [
+                        Customer
+                    ]
+                }
+            ]
+        })
+        .then( data => res.json({'success': true, 'payload': data}))
+        .catch( err => res.json({'success': false, 'error': err}))
+        },
     employee_getOne: (req, res) => {
         Employee.findOne({ where: { id: req.params.id } })
         .then( data => res.json({'success': true, 'payload': data}))

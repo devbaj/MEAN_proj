@@ -26,8 +26,8 @@ module.exports = (sequelize, DataTypes) => {
     });
     Employee.belongsToMany(models.Job, {
       through: 'employees_jobs',
-      as: 'job'
     });
+
   };
   return Employee;
 };

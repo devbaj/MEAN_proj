@@ -23,6 +23,7 @@ module.exports = function(app){
     
     //CRUD Employees
     app.get('/api/employee/all', controller.employee_all);
+    app.get('/api/employee/all/withassociations', controller.employee_all_with_jobs);
     app.get('/api/employee/:id', controller.employee_getOne);
     app.post('/api/employee/new', controller.employee_new);
     // app.patch('/api/employee/edit/:id', controller.employee_edit);
