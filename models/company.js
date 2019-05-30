@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    companyIndustry: {
+    industryType: {
       type: DataTypes.STRING,
     },
   }, {});

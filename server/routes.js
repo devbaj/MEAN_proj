@@ -10,3 +10,4 @@ module.exports = function(app){
 		return res.sendFile(path.resolve("./public/dist/public/index.html"));
     });
 };
+
