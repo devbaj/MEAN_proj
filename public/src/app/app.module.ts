@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './http.service';
-import { D3Service } from './d3.service';
+import { D3Service } from './d3/d3.service';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -18,6 +18,7 @@ import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserMgmtService } from './user-mgmt.service';
 import { DataEntryComponent } from './data-entry/data-entry.component';
+import { VisualizeComponent } from './visualize/visualize.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DataEntryComponent } from './data-entry/data-entry.component';
     SidebarComponent,
     FooterComponent,
     UserSettingsComponent,
-    DataEntryComponent
+    DataEntryComponent,
+    VisualizeComponent
   ],
   imports: [
     BrowserModule,

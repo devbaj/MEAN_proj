@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { DataEntryComponent } from './data-entry/data-entry.component';
+import { VisualizeComponent } from './visualize/visualize.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'data',
     component: DataEntryComponent
+  },
+  {
+    path: 'visualize',
+    component: VisualizeComponent
   },
   {
     path: '',
