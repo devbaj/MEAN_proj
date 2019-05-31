@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       through: 'employees_jobs',
       as: 'employee'
     });
+    Job.belongsTo(models.Customer);
   };
   return Job;
 };
