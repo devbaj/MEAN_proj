@@ -52,7 +52,9 @@ module.exports = function(app){
     //CRUD Users
     app.get('/api/users/all', controller.users_all);
     app.get('/api/users/:id', controller.users_getOne);
-    app.post('/api/users/new', controller.users_new);
+		app.post('/api/users/new', controller.users_new);
+		app.post('/api/users/emails', controller.checkDupes);
+		app.post('/api/users/login', controller.attemptLogin);
     // app.patch('/api/users/edit/:id', controller.users_edit);
     app.delete('/api/users/delete/:id', controller.users_deleteOne);
     

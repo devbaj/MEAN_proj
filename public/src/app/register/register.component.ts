@@ -12,32 +12,42 @@ export class RegisterComponent implements OnInit {
   email: string;
   pw: string;
   pwConf: string;
-  newUser = {
-  };
+  newUser = {};
   pwMatch: boolean;
-  emailDupe: boolean
+  emailDupe: boolean;
+  timeout: any;
 
   constructor(
     private _httpService: HttpService
   ) {
     this.pwMatch = true;
     this.emailDupe = false;
+    this.timeout = null;
   }
 
   ngOnInit() {
   }
 
   checkDupes(email: string): void {
-    let observable = this._httpService.checkDupes('email', email);
-    observable.subscribe( res => {
-      if (res[`dupe`]) { this.emailDupe = true; }
-    });
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout( () => {
+      let observable = this._httpService.checkDupes('email', email);
+      observable.subscribe( res => {
+        if (res[`success`] && res[`dupe`]) {
+          this.emailDupe = true;
+          console.log('')
+        } else if (!res[`success`]) { console.log('error', res[`error`]); }
+      });
+    }, 500);
   }
 
   checkPwMatch(): void {
-    if (this.pw !== this.pwConf && this.pwConf.length > 6) {
-      this.pwMatch = false;
-    }
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout( () => {
+      if (this.pw !== this.pwConf && this.pwConf.length > 6) {
+        this.pwMatch = false;
+      }
+    }, 1000);
   }
 
   submit(): void {
@@ -50,13 +60,13 @@ export class RegisterComponent implements OnInit {
       };
       let observable = this._httpService.createUser(this.newUser);
       observable.subscribe( res => {
-
+        console.log(res);
       });
     } else if (this.emailDupe) {
-      console.log('email already taken') // TODO: user error messaging
+      console.log('email already taken'); // TODO: user error messaging
     } else if (this.pw !== this.pwConf) {
       this.pwMatch = false;
-      console.log()
+      console.log('pw are different');
     }
   }
 

@@ -11,15 +11,15 @@ export class HttpService {
   ) { }
 
   createUser(newUser: any): any {
-    return this._http.post('', {newUser});
+    return this._http.post('api/users/new', {newUser});
   }
 
   checkDupes(field: string, input: string): any {
-    return this._http.post('', {field, input});
+    return this._http.post('api/users/emails', {field, input});
   }
 
   attemptLogin(email: string, pw: string): any {
-    return this._http.post('', {email, password: pw});
+    return this._http.post('api/users/login', {email, password: pw});
   }
 
   setUser(userid: string): any {
@@ -28,6 +28,10 @@ export class HttpService {
 
   addData(userid: string, entry: any): any {
     return this._http.post('', {userid, entry});
+  }
+
+  getUserInfo(userid: string) {
+    return this._http.get(`api/users/${userid}`);
   }
 
 }

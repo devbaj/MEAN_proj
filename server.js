@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 //set port
 app.set('port', process.env.port||3000)
-// app.use(express.static( __dirname + '/public/dist/public' ));
+app.use(express.static( __dirname + '/public/dist/public' ));
 require('./server/routes.js')(app)
 
 app.get('/',(req,res) => {

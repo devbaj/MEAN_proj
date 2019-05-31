@@ -1,5 +1,7 @@
 ////MODULARIZATION WITH MODELS:
 const User = require("../models").User;
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 //==================   This could get messy, we should modularize it.  I spent time trying to do it but couldn't get it working
 //EXPORT OUR CONTROLLERS SO OUR ROUTES CAN ACCESS IT
@@ -194,10 +196,28 @@ module.exports = {
         .catch( err => res.json({'success': false, 'error': err}))
         },
     users_new: (req, res) => {
-        User.create( req.body )
-        .then( data => res.json({'success': true, 'payload': data}))
-        .catch( err => res.json({'success': false, 'error': err}))
-        },
+			console.log( req.body);
+			var pwHash;
+			bcrypt.hash(req.body.newUser.password, saltRounds, (err, hash) => {
+				if (err) {
+					console.log(err);
+				} else {
+					pwHash = hash;
+					User.create({
+						firstName: req.body.newUser.firstName,
+						lastName: req.body.newUser.lastName,
+						email: req.body.newUser.email,
+						password: pwHash
+						})
+						.then( data => {
+							console.log('dataobject', data);
+							res.json({success: true, payload: data})
+						})
+						.catch( err => res.json({success: false, error: err}));
+				}
+			})
+		},
+
         //edit needs to be passed in from a form
     // users_edit: (req, res) => {
     //     User.update({ where: { id: req.params.id } })
@@ -210,7 +230,38 @@ module.exports = {
         .catch( err => res.json({'success': false, 'error': err}))
         },
 
+		checkDupes: (req, res) => {
+			User.findAll({
+				attributes: ['email'],
+				where: { email : req.body.input} 
+			} )
+				.then( data => {
+					if (data.length > 0) {
+						res.json({success: true, dupes: true});
+					} else {
+						res.json({success: true, dupes: false});
+					}
+				})
+				.catch( err => res.json({success: false, error: err}));
+		},
+
+		attemptLogin: (req, res) => {
+			console.log(req.body);
+			User.findOne({where: {email: req.body.email}})
+			.then(data => {
+				bcrypt.compare(req.body.password, data.password, (err, result) => {
+					if (result) {
+						console.log('login attempted for', data.dataValues.firstName, data.dataValues.lastName);
+						res.json( {
+							success: true,
+							payload: {
+								userid: data.dataValues.id,
+								name: data.dataValues.firstName + ' ' + data.dataValues.lastName
+					}})} else {
+						res.json({success: false, error: 'Password incorrect'});
+					}
+				})
+			})
+		}
 
 }
-            
-            
